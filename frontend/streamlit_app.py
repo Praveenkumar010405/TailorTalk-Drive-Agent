@@ -8,11 +8,14 @@ import uuid
 
 import streamlit as st
 
-DEFAULT_BACKEND_URL = "http://localhost:8000"
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "https://tailortalk-drive-agent-s11g.onrender.com"
+);
 
 
 def _backend_url() -> str:
-    return os.getenv("TAILORTALK_BACKEND_URL", DEFAULT_BACKEND_URL).rstrip("/")
+    return os.getenv("TAILORTALK_BACKEND_URL", BACKEND_URL).rstrip("/")
 
 
 def _post_chat(message: str, session_id: str) -> dict:
